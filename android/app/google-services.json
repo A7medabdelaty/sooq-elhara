@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "648942359764",
+    "project_id": "souq-elhara",
+    "storage_bucket": "souq-elhara.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:648942359764:android:7b11df40e89658d8d75741",
+        "android_client_info": {
+          "package_name": "com.eclassify.wrteam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "648942359764-8njd11htbk4g6ape6nn7i6v252nf0p4c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi-QshAEFlR-s7R5jGgB-0isSVb8I5ld4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "648942359764-8njd11htbk4g6ape6nn7i6v252nf0p4c.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "648942359764-dl5o160je2hm8rojl9bjqmg0tietkp5l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.eclassify.wrteam"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
