@@ -43,12 +43,11 @@ class _AttachmentMessageState extends State<AttachmentMessage> {
       }
 
       // 🔹 Open the file
-      final result = await OpenFilex.open(filePath);
+      await OpenFilex.open(filePath);
     } catch (e) {
       print('Error opening image: $e');
     }
   }
-
 
   @override
   Widget build(BuildContext context) {

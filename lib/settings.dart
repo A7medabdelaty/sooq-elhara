@@ -28,13 +28,11 @@ class PaymentGateway {
 class AppSettings {
   /// Basic Settings
 
-
-  static const String applicationName = 'eClassify';
+  static const String applicationName = 'سوق الحارة';
   static const String packageName = 'com.eclassify.wrteam';
 
   //PLEASE ADD WITH https://
   static const String hostUrl = "PLACE_YOUR_ADMIN_PANEL_HOST_URL_HERE";
-
 
   ///API Setting
 
@@ -44,7 +42,6 @@ class AppSettings {
   static final String baseUrl = "${HelperUtils.checkHost(hostUrl)}api/";
 
   static const int hiddenAPIProcessDelay = 1;
-
 
   static const String shareNavigationWebUrl = "eclassifyweb.wrteam.me";
 
