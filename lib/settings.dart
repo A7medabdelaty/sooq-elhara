@@ -63,7 +63,7 @@ class AppSettings {
 
   static const String notificationChannel = "basic_channel";
   static int uploadImageQuality = 20;
-  static const Set additionalRTLlanguages = {};
+  static const Set additionalRTLlanguages = {'ar'};
 
   static const String riveAnimationFile = "rive_animation.riv";
 

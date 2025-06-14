@@ -21,12 +21,25 @@ class AppLocalization {
 
 
   Future loadJson() async {
-    String jsonStringValues =
-        await rootBundle.loadString('assets/languages/template.json');
+    String languageCode = 'ar'; // Default to Arabic
+    
+    // Get stored language or default to Arabic
+    if (HiveUtils.getLanguage() != null &&
+        HiveUtils.getLanguage()['code'] != null) {
+      String storedCode = HiveUtils.getLanguage()['code'];
+      // Only allow Arabic and English
+      if (storedCode == 'ar' || storedCode == 'en') {
+        languageCode = storedCode;
+      }
+    }
+    
+    String jsonStringValues;
     Map<String, dynamic> mappedJson = {};
 
     if (HiveUtils.getLanguage() == null ||
         HiveUtils.getLanguage()['data'] == null) {
+      // Load from appropriate language file
+      jsonStringValues = await rootBundle.loadString('assets/languages/$languageCode.json');
       mappedJson = json.decode(jsonStringValues);
     } else {
       mappedJson = Map<String, dynamic>.from(HiveUtils.getLanguage()['data']);
@@ -51,7 +64,8 @@ class _AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {
 
   @override
   bool isSupported(Locale locale) {
-    return true;
+    // Only support Arabic and English
+    return ['ar', 'en'].contains(locale.languageCode);
   }
 
   @override

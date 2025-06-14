@@ -115,7 +115,7 @@ class _AppState extends State<App> {
     if ((state is LanguageLoader)) {
       return Locale(state.language['code']);
     } else if (state is LanguageLoadFail) {
-      return const Locale("en");
+      return const Locale("ar"); // Default to Arabic
     }
   }
 }

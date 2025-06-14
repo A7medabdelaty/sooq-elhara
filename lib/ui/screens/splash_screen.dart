@@ -66,15 +66,27 @@ class SplashScreenState extends State<SplashScreen>
 
   Future getDefaultLanguage(String code) async {
     try {
+      // Force Arabic as default language, only allow Arabic or English
+      String defaultCode = 'ar';
+      if (code == 'en' || code == 'ar') {
+        defaultCode = code;
+      }
+      
       if (HiveUtils.getLanguage() == null ||
           HiveUtils.getLanguage()?['data'] == null) {
-        context.read<FetchLanguageCubit>().getLanguage(code);
+        context.read<FetchLanguageCubit>().getLanguage(defaultCode);
       } else if (HiveUtils.isUserFirstTime() &&
-          code != HiveUtils.getLanguage()?['code']) {
-        context.read<FetchLanguageCubit>().getLanguage(code);
+          defaultCode != HiveUtils.getLanguage()?['code']) {
+        context.read<FetchLanguageCubit>().getLanguage(defaultCode);
       } else {
-        isLanguageLoaded = true;
-        setState(() {});
+        // Ensure stored language is Arabic or English, otherwise default to Arabic
+        String? storedCode = HiveUtils.getLanguage()?['code'];
+        if (storedCode != 'ar' && storedCode != 'en') {
+          context.read<FetchLanguageCubit>().getLanguage('ar');
+        } else {
+          isLanguageLoaded = true;
+          setState(() {});
+        }
       }
     } catch (e) {
       log("Error while load default language $e");

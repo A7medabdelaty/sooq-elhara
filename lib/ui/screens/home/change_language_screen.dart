@@ -36,9 +36,21 @@ class LanguagesListScreen extends StatelessWidget {
       );
     }
 
-    List setting = context
+    List allLanguages = context
         .watch<FetchSystemSettingsCubit>()
         .getSetting(SystemSetting.language) as List;
+    
+    // Filter to show only Arabic and English
+    List setting = allLanguages.where((lang) => 
+        lang['code'] == 'ar' || lang['code'] == 'en'
+    ).toList();
+    
+    // Ensure Arabic is first in the list (default)
+    setting.sort((a, b) {
+      if (a['code'] == 'ar') return -1;
+      if (b['code'] == 'ar') return 1;
+      return 0;
+    });
 
     var language = context.watch<LanguageCubit>().state;
     return Scaffold(
